@@ -47,7 +47,7 @@ APPEND_SLASH  = False
 # Application definition
 
 PROJECT_APPS = [
-    
+    'api'
 ]
 
 THIRD_PARTY_APPS = [
