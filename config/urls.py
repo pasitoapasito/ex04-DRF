@@ -12,12 +12,12 @@ Swagger settings
 """
 schema_view = get_schema_view(
     openapi.Info(
-        title='cicd API',
-        default_version='v1',
-        description='cicd-project',
+        title           = 'cicd API',
+        default_version = 'v1',
+        description     = 'cicd-project',
     ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
+    public = True,
+    permission_classes = (permissions.AllowAny,),
 )
 
 """
@@ -25,6 +25,7 @@ Django app url patterns
 """
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api', include('api.urls')),
 ]
 
 """
