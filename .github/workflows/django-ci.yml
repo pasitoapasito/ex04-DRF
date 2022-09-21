@@ -56,7 +56,7 @@ jobs:
       env: 
         DBENGINE: django.db.backends.mysql
         DBNAME: django-ci
-        DBUSER: user
+        DBUSER: root
         DBPASSWORD: root
         DBHOST: 127.0.0.1
         DBPORT: 3306
@@ -70,7 +70,7 @@ jobs:
       env: 
         DBENGINE: django.db.backends.mysql
         DBNAME: django-ci
-        DBUSER: user
+        DBUSER: root
         DBPASSWORD: root
         DBHOST: 127.0.0.1
         DBPORT: 3306
