@@ -37,7 +37,7 @@ class ApiTestViewTest(APITestCase):
         response = self.client\
                        .post('/api/test', data=json.dumps(data), content_type='application/json')
                        
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 402)
         self.assertEqual(
             response.json(),
             {
