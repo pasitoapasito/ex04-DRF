@@ -42,7 +42,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Migrations
-      run: python manage.py migrate
+      run: |
+        export DEBUG=1
+        export SECRET_KEY=test-secret-key
+        export ALLOWED_HOSTS=*
+        python manage.py migrate
       env: 
         DBENGINE: django.db.backends.mysql
         DBNAME: django-ci
@@ -52,6 +56,9 @@ jobs:
         DBPORT: $
     - name: Run Tests
       run: |
+        export DEBUG=1
+        export SECRET_KEY=test-secret-key
+        export ALLOWED_HOSTS=*
         python manage.py test
       env: 
         DBENGINE: django.db.backends.mysql
