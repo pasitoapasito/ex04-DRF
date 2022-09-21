@@ -59,7 +59,8 @@ jobs:
         export DEBUG=1
         export SECRET_KEY=test-secret-key
         export ALLOWED_HOSTS=*
-        python manage.py test
+        coverage run manage.py test
+        coverage report
       env: 
         DBENGINE: django.db.backends.mysql
         DBNAME: django-ci
