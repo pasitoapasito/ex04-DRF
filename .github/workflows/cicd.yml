@@ -83,7 +83,9 @@ jobs:
   build-deploy:
     
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
     needs: [test]
+    
     steps:
     - name: checkout
       uses: actions/checkout@v2
