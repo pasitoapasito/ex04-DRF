@@ -47,7 +47,7 @@ APPEND_SLASH  = False
 # Application definition
 
 PROJECT_APPS = [
-    
+    'api'
 ]
 
 THIRD_PARTY_APPS = [
@@ -101,33 +101,44 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-## DOCKER DB FOR DEPLOY ##
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': get_env_variable('MYSQL_DATABASE'),
-        'USER': 'root',
-        'PASSWORD': get_env_variable('MYSQL_ROOT_PASSWORD'),
-        'HOST': 'db',
-        'PORT': get_env_variable('MYSQL_TCP_PORT'),
-    }
-}
-'''
 
-## AWS RDS FOR LOCAL-DEV ##
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': get_env_variable('RDS_DB_NAME'),
-        'USER': get_env_variable('RDS_USERNAME'),
-        'PASSWORD': get_env_variable('RDS_PASSWORD'),
-        'HOST': get_env_variable('RDS_HOSTNAME'),
-        'PORT': get_env_variable('RDS_PORT'),
-        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+if os.getenv('GITHUB_WORKFLOW'):
+    DATABASES = {
+        'default': {
+            'ENGINE': get_env_variable('DBENGINE'),
+            'NAME': get_env_variable('DBNAME'),
+            'USER': get_env_variable('DBUSER'),
+            'PASSWORD': get_env_variable('DBPASSWORD'),
+            'HOST': get_env_variable('DBHOST'),
+            'PORT': get_env_variable('DBPORT')
+        }
     }
-}
-
+else:
+    ## AWS RDS FOR LOCAL-DEV ##
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': get_env_variable('RDS_DB_NAME'),
+            'USER': get_env_variable('RDS_USERNAME'),
+            'PASSWORD': get_env_variable('RDS_PASSWORD'),
+            'HOST': get_env_variable('RDS_HOSTNAME'),
+            'PORT': get_env_variable('RDS_PORT'),
+            'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+        }
+    }
+    ## DOCKER DB FOR DEPLOY ##
+    '''
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': get_env_variable('MYSQL_DATABASE'),
+            'USER': 'root',
+            'PASSWORD': get_env_variable('MYSQL_ROOT_PASSWORD'),
+            'HOST': 'db',
+            'PORT': get_env_variable('MYSQL_TCP_PORT'),
+        }
+    }
+    '''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
