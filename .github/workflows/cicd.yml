@@ -102,7 +102,7 @@ jobs:
         key: ${{ secrets.KEY }}
         script: mkdir -p /home/ubuntu/srv/deploy
     
-    - name: copy source via ssh password
+    - name: copy source via ssh key
       uses: burnett01/rsync-deployments@4.1
       with:
         switches: -avzr --delete
@@ -111,7 +111,7 @@ jobs:
         remote_user: ${{ secrets.USERNAME }}
         remote_key: ${{ secrets.KEY }}
 
-    - name: executing remote ssh commands using password
+    - name: executing remote ssh commands
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
