@@ -98,7 +98,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        key: ${{ secrets.KEY }}
         script: mkdir -p /home/ubuntu/srv/deploy
     
     - name: copy source via ssh password
@@ -108,13 +108,13 @@ jobs:
         remote_path: /home/ubuntu/srv/deploy/
         remote_host: ${{ secrets.HOST }}
         remote_user: ${{ secrets.USERNAME }}
-        remote_password: ${{ secrets.PASSWORD }}
+        remote_key: ${{ secrets.KEY }}
 
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        key: ${{ secrets.KEY }}
         script: |
           sh /home/ubuntu/srv/deploy/config/scripts/deploy.sh
