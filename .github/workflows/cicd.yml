@@ -58,12 +58,12 @@ jobs:
         export ALLOWED_HOSTS=*
         python manage.py migrate
       env: 
-        DBENGINE: django.db.backends.mysql
-        DBNAME: django-ci
-        DBUSER: root
-        DBPASSWORD: root
-        DBHOST: 127.0.0.1
-        DBPORT: 3306
+        DB_ENGINE: django.db.backends.mysql
+        DB_NAME: django-ci
+        DB_USER: root
+        DB_PASSWORD: root
+        DB_HOST: 127.0.0.1
+        DB_PORT: 3306
     
     - name: Run Tests
       run: |
@@ -73,12 +73,12 @@ jobs:
         coverage run manage.py test
         coverage report
       env: 
-        DBENGINE: django.db.backends.mysql
-        DBNAME: django-ci
-        DBUSER: root
-        DBPASSWORD: root
-        DBHOST: 127.0.0.1
-        DBPORT: 3306
+        DB_ENGINE: django.db.backends.mysql
+        DB_NAME: django-ci
+        DB_USER: root
+        DB_PASSWORD: root
+        DB_HOST: 127.0.0.1
+        DB_PORT: 3306
 
   build-deploy:
     

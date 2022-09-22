@@ -105,12 +105,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 if os.getenv('GITHUB_WORKFLOW'):
     DATABASES = {
         'default': {
-            'ENGINE': get_env_variable('DBENGINE'),
-            'NAME': get_env_variable('DBNAME'),
-            'USER': get_env_variable('DBUSER'),
-            'PASSWORD': get_env_variable('DBPASSWORD'),
-            'HOST': get_env_variable('DBHOST'),
-            'PORT': get_env_variable('DBPORT')
+            'ENGINE': get_env_variable('DB_ENGINE'),
+            'NAME': get_env_variable('DB_NAME'),
+            'USER': get_env_variable('DB_USER'),
+            'PASSWORD': get_env_variable('DB_PASSWORD'),
+            'HOST': get_env_variable('DB_HOST'),
+            'PORT': get_env_variable('DB_PORT')
         }
     }
 else:
