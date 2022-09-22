@@ -114,7 +114,7 @@ if os.getenv('GITHUB_WORKFLOW'):
         }
     }
 else:
-    ## AWS RDS FOR LOCAL-DEV ##
+    ## AWS RDS ##
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -126,7 +126,7 @@ else:
             'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
         }
     }
-    ## DOCKER DB FOR DEPLOY ##
+    ## DOCKER DB ##
     '''
     DATABASES = {
         'default': {
