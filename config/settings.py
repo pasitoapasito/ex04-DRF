@@ -115,6 +115,7 @@ if os.getenv('GITHUB_WORKFLOW'):
     }
 else:
     ## AWS RDS FOR LOCAL-DEV ##
+    '''
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -126,8 +127,8 @@ else:
             'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
         }
     }
-    ## DOCKER DB FOR DEPLOY ##
     '''
+    ## DOCKER DB FOR DEPLOY ##
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -138,7 +139,6 @@ else:
             'PORT': get_env_variable('MYSQL_TCP_PORT'),
         }
     }
-    '''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
