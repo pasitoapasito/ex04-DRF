@@ -1,1 +1,1 @@
-# Github Actions CI/CD Practice
+# Github Actions CI-CD Practice
