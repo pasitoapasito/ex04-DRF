@@ -105,16 +105,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 if os.getenv('GITHUB_WORKFLOW'):
     DATABASES = {
         'default': {
-            'ENGINE': get_env_variable('DBENGINE'),
-            'NAME': get_env_variable('DBNAME'),
-            'USER': get_env_variable('DBUSER'),
-            'PASSWORD': get_env_variable('DBPASSWORD'),
-            'HOST': get_env_variable('DBHOST'),
-            'PORT': get_env_variable('DBPORT')
+            'ENGINE': get_env_variable('DB_ENGINE'),
+            'NAME': get_env_variable('DB_NAME'),
+            'USER': get_env_variable('DB_USER'),
+            'PASSWORD': get_env_variable('DB_PASSWORD'),
+            'HOST': get_env_variable('DB_HOST'),
+            'PORT': get_env_variable('DB_PORT')
         }
     }
 else:
-    ## AWS RDS FOR LOCAL-DEV ##
+    ## AWS RDS ##
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -126,7 +126,7 @@ else:
             'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
         }
     }
-    ## DOCKER DB FOR DEPLOY ##
+    ## DOCKER DB ##
     '''
     DATABASES = {
         'default': {
@@ -139,7 +139,6 @@ else:
         }
     }
     '''
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
