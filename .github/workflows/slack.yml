@@ -18,16 +18,18 @@ jobs:
   slack:
     runs-on: ubuntu-latest
     steps:
-    - name: send slack message 
-      uses: pasitoapasito/custom-actions@main
+    - name: send slack push message 
       if: ${{ github.event_name == 'push' }}
+      uses: pasitoapasito/custom-actions@main
       with:
         args: slack
       env:
         SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
         SLACK_MESSAGE: Push Event!!
 
+    - name: send slack pull request message 
       if: ${{ github.event_name == 'pull_request' }}
+      uses: pasitoapasito/custom-actions@main
       with:
         args: slack
       env:
