@@ -1,1 +1,1 @@
-# Github Actions CI-CD Practice with DRF
+# Github Actions CI/CD Practice with DRF
